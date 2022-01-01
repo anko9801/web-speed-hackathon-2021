@@ -38,7 +38,7 @@ async function sendFile(url, file) {
     body: file,
   });
   if (!res.ok) throw createFetchError(res);
-  return res;
+  return res.json();
 }
 
 /**
@@ -61,7 +61,7 @@ async function sendJSON(url, data) {
     body: compressed.buffer,
   });
   if (!res.ok) throw createFetchError(res);
-  return res;
+  return res.json();
 }
 
 export { fetchBinary, fetchJSON, sendFile, sendJSON };
