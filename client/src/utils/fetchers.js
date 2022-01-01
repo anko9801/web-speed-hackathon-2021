@@ -7,7 +7,7 @@ const createFetchError = (res) => new Error(`Failed to fetch(${res.status}): ${r
  * @returns {Promise<ArrayBuffer>}
  */
 async function fetchBinary(url) {
-  const result = await fetch(url);
+  const res = await fetch(url);
   if (!res.ok) throw createFetchError(res);
   return res.arrayBuffer();
 }
@@ -30,12 +30,12 @@ async function fetchJSON(url) {
  * @returns {Promise<T>}
  */
 async function sendFile(url, file) {
-  const res = fetch(url, {
+  const res = await fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-type': 'application/octet-stream',
-    },
     body: file,
+    headers: {
+      'Content-Type': 'application/octet-stream',
+    },
   });
   if (!res.ok) throw createFetchError(res);
   return res.json();
@@ -54,11 +54,11 @@ async function sendJSON(url, data) {
 
   const res = await fetch(url, {
     method: 'POST',
+    body: compressed.buffer,
     headers: {
       'Content-Encoding': 'gzip',
       'Content-Type': 'application/json',
     },
-    body: compressed.buffer,
   });
   if (!res.ok) throw createFetchError(res);
   return res.json();
