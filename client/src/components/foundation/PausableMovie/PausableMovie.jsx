@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { Animator, Decoder } from 'gifler';
 import { GifReader } from 'omggif';
 import React from 'react';
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 
 import { useFetch } from '../../../hooks/use_fetch';
 import { fetchBinary } from '../../../utils/fetchers';
@@ -81,7 +82,7 @@ const PausableMovie = ({ src }) => {
             },
           )}
         >
-          <FontAwesomeIcon iconType={isPlaying ? 'pause' : 'play'} styleType="solid" />
+          <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
         </div>
       </button>
     </AspectRatioBox>
