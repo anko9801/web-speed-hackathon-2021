@@ -11,9 +11,9 @@ ReactDOM.render(
   document.getElementById('app'),
 );
 
-requestIdleCallback(() => {
-  const $font = document.createElement('link');
-  $font.rel = 'stylesheet'
-  $font.href = '/fonts/webfont.css'
-  document.head.append($font)
-})
+// requestIdleCallback(() => {
+//   const $font = document.createElement('link');
+//   $font.rel = 'stylesheet'
+//   $font.href = '/fonts/webfont.css'
+//   document.head.append($font)
+// })
