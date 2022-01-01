@@ -58,7 +58,7 @@ async function sendJSON(url, data) {
       'Content-Encoding': 'gzip',
       'Content-Type': 'application/json',
     },
-    body: compressed,
+    body: compressed.buffer,
   });
   if (!res.ok) throw createFetchError(res);
   return res;
