@@ -46,7 +46,7 @@ export function useInfiniteFetch(apiPath, fetcher) {
     promise.then((nextData) => {
       setResult((cur) => ({
         ...cur,
-        data: [...cur.data, nextData],
+        data: [...cur.data, ...nextData],
         isLoading: false,
       }));
       internalRef.current = {
