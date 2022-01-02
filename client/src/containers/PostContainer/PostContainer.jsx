@@ -17,20 +17,12 @@ const PostContainer = () => {
 
   const { data: comments, fetchMore } = useInfiniteFetch(`/api/v1/posts/${postId}/comments`, fetchJSON);
 
-  if (isLoadingPost) {
-    return (
-      <Helmet>
-        <title>読込中 - CAwitter</title>
-      </Helmet>
-    );
-  }
-
-  if (post === null) {
+  if (isLoadingPost && post === null) {
     return <NotFoundContainer />;
   }
 
   return (
-    <InfiniteScroll fetchMore={fetchMore} items={comments}>
+    <InfiniteScroll fetchMore={fetchMore} items={post ? comments : []}>
       <Helmet>
         <title>{post.user.name} さんのつぶやき - CAwitter</title>
       </Helmet>
