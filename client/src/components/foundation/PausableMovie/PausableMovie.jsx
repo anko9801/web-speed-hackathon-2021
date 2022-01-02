@@ -19,7 +19,7 @@ const PausableMovie = ({ src }) => {
   const videoRef = React.useRef(null);
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const [isPlaying, setIsPlaying] = React.useState(prefersReducedMotion);
+  const [isPlaying, setIsPlaying] = React.useState(!prefersReducedMotion);
   const handleClick = React.useCallback(() => {
     setIsPlaying((isPlaying) => {
       if (isPlaying) {
