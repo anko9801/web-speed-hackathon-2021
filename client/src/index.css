@@ -4,6 +4,7 @@
 
 body {
   font-family: '源暎エムゴ', sans-serif;
+  overflow-y: scroll;
 }
 
 .font-awesome {
